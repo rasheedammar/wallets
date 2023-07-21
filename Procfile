@@ -1,1 +1,1 @@
-web: node 3commas/project/index2.mjs
+web: node index2.mjs
