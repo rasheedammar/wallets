@@ -1,1 +1,1 @@
-web: node app.js
+web: node project/index2.mjs
