@@ -3,12 +3,9 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import favicon from 'serve-favicon';
-import favicon from 'express-favicon';
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 
 // Initialize your API keys and secrets
 const apiKey1 = '35c1fd4032924b3aad132a6d135294f8192816f541da44039dcea439f3e6cce3';
@@ -24,15 +21,11 @@ const api1 = new threeCommasAPI({
 const api2 = new threeCommasAPI({
   apiKey: apiKey2,
   apiSecret: apiSecret2,
-  // url: 'https://api.3commas.io' // this is optional in case of defining other endpoint
-  // forcedMode: 'real' // this is optional in case of defining account mode, 'real' or 'paper'
 });
 
 const app = express();
 
-
 const faviconPath = path.join(__dirname, 'favicon.ico');
-app.use(favicon(faviconPath));
 
 
 // Define a route for the root endpoint

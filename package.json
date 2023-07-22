@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "serve-favicon": "^3.0.0",
+    "serve-favicon": "^2.0.4",
     "3commas-api-node": "^1.2.0",
     "express": "^4.18.2",
     "express-favicon": "^2.0.4",
