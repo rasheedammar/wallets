@@ -1,8 +1,8 @@
 import threeCommasAPI from '3commas-api-node';
 import express from 'express';
-import favicon from 'express-favicon';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import favicon from 'serve-favicon'; // Use either 'serve-favicon' or 'express-favicon', not both
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,12 +28,14 @@ const api2 = new threeCommasAPI({
 
 const app = express();
 
-// Serve the favicon
-app.use(favicon(join(__dirname, 'favicon.ico')));
+
+const faviconPath = path.join(__dirname, 'favicon.ico');
+app.use(favicon(faviconPath));
+
 
 // Define a route for the root endpoint
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html')); // Use path.join directly
 });
 
 // Define a route for the /api1/balances endpoint
@@ -101,7 +103,7 @@ app.get('/api2/account/:id', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}.`);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
