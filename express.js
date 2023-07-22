@@ -2,7 +2,9 @@ import threeCommasAPI from '3commas-api-node';
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import favicon from 'serve-favicon'; // Use either 'serve-favicon' or 'express-favicon', not both
+import favicon from 'serve-favicon';
+import favicon from 'express-favicon';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
