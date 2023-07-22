@@ -1,5 +1,6 @@
 import threeCommasAPI from '3commas-api-node';
 import express from 'express';
+import favicon from 'express-favicon';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -106,6 +107,11 @@ app.get('/', (req, res) => {
     }
   });
   
+
+  app.use(favicon(__dirname + '/favicon.ico'));
+
+
+
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}.`);
