@@ -28,7 +28,6 @@ const app = express();
 app.get('/', (req, res) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
-    res.send('Hello, this is the root path!');
     res.sendFile(join(__dirname, 'index.html'));
   });
   
