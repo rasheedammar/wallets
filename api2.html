@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Balance Wallet</title>
+  <title>API2 Balances</title>
   <style>
     /* Add your custom CSS styles here to style the table */
     body {
@@ -16,8 +15,7 @@
       border-collapse: collapse;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
@@ -30,60 +28,29 @@
     tr:hover {
       background-color: #f5f5f5;
     }
-
-    .table-container {
-      margin-bottom: 30px;
-    }
-
-    .line {
-      width: 100%;
-      border-top: 1px solid #ddd;
-      margin-bottom: 30px;
-    }
   </style>
 </head>
-
 <body>
-  <h1>Balance Data</h1>
-  <div class="table-container">
-    <h2>API1 Balances</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-      <tbody id="api1TableBody">
-        <!-- This is where the API1 data will be dynamically rendered -->
-      </tbody>
-    </table>
-  </div>
-
-  <div class="line"></div>
-
-  <div class="table-container">
-    <h2>API2 Balances</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Balance</th>
-        </tr>
-      </thead>
-      <tbody id="api2TableBody">
-        <!-- This is where the API2 data will be dynamically rendered -->
-      </tbody>
-    </table>
-  </div>
+  <h1>API2 Balances</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Balance</th>
+      </tr>
+    </thead>
+    <tbody id="balanceTableBody">
+      <!-- This is where the data will be dynamically rendered -->
+    </tbody>
+  </table>
 
   <script>
     // JavaScript code to fetch data and dynamically render it in the table
-    async function fetchDataAndRender(apiEndpoint, tableBodyId) {
+    async function fetchDataAndRender(apiEndpoint) {
       try {
         const response = await fetch(apiEndpoint);
         const data = await response.json();
-        const tableBody = document.getElementById(tableBodyId);
+        const tableBody = document.getElementById('balanceTableBody');
 
         // Clear existing table rows
         tableBody.innerHTML = '';
@@ -106,12 +73,8 @@
       }
     }
 
-    // Fetch and render data for API1 from the Heroku app URL
-    fetchDataAndRender('https://balancewallet-9dc5219d78e1.herokuapp.com/api1/balances', 'api1TableBody');
-
     // Fetch and render data for API2 from the Heroku app URL
-    fetchDataAndRender('https://balancewallet-9dc5219d78e1.herokuapp.com/api2/balances', 'api2TableBody');
+    fetchDataAndRender('https://balancewallet-9dc5219d78e1.herokuapp.com/api2/balances');
   </script>
 </body>
-
 </html>

@@ -30,12 +30,11 @@ const app = express();
 // Define the path to your favicon
 const faviconPath = path.join(__dirname, 'favicon.ico');
 
-// Remove the 'serve-favicon' middleware, as it is no longer a dependency
-// app.use(favicon(faviconPath));
+app.use(favicon(faviconPath)); // Add this line to serve the favicon
 
 // Define a route for the root endpoint
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html')); // Use path.join directly
+  res.sendFile(path.join(__dirname, 'balances.html')); // Use path.join directly
 });
 
 // Define a route for the /api1/balances endpoint
@@ -68,7 +67,9 @@ app.get('/api2/balances', async (req, res) => {
 
 // Add your other routes here
 // ...
+// ... (other code remains the same)
 
+// Define a route for /api1/account/:id endpoint
 app.get('/api1/account/:id', async (req, res) => {
   const accountId = req.params.id;
   try {
@@ -86,6 +87,7 @@ app.get('/api1/account/:id', async (req, res) => {
   }
 });
 
+// Define a route for /api2/account/:id endpoint
 app.get('/api2/account/:id', async (req, res) => {
   const accountId = req.params.id;
   try {
@@ -103,7 +105,12 @@ app.get('/api2/account/:id', async (req, res) => {
   }
 });
 
+// ... (other code remains the same)
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
